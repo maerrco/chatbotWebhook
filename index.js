@@ -29,7 +29,7 @@ restService.post("/echo", function(req, res) {
 
 restService.post("/sdpFailed", function(req, res) {
   var speech = "";
-  if(req.body.result.action == "comp602") {
+  if(req.body.result.parameters.paper == "comp602") {
     switch (req.body.result.parameters.chosenMajor.toLowerCase()) {
       //Speech Synthesis Markup Language 
       case "software development":
@@ -38,7 +38,7 @@ restService.post("/sdpFailed", function(req, res) {
         break;
     }
   }
-  else if(req.body.result.action == "ense701") {
+  else if(req.body.result.parameters.paper == "ense701") {
     switch (req.body.result.parameters.chosenMajor.toLowerCase()) {
       //Speech Synthesis Markup Language 
       case "software development":
