@@ -43,7 +43,7 @@ restService.post("/sdpFailed", function(req, res) {
       //Speech Synthesis Markup Language 
       case "software development":
         speech =
-          'COMP602 (Software Development Practice) is needed for second year of the Software Development major. Since you failed it, im afraid you will have to repeat it if you want to continue with this major.';
+          'You have 2 options:';
         break;
     }
   }
