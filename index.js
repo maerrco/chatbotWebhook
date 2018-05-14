@@ -27,13 +27,13 @@ restService.post("/echo", function(req, res) {
   });
 });
 
-restService.post("/audio", function(req, res) {
+restService.post("/sdpFailed", function(req, res) {
   var speech = "";
   switch (req.body.result.parameters.AudioSample.toLowerCase()) {
     //Speech Synthesis Markup Language 
-    case "music one":
+    case "software development":
       speech =
-        '<speak><audio src="https://actions.google.com/sounds/v1/cartoon/slide_whistle.ogg">did not get your audio file</audio></speak>';
+        'COMP602 (Software Development Practice) is needed for second year of the Software Development major. Since you failed it, im afraid you will have to repeat it if you want to continue with this major.';
       break;
     case "music two":
       speech =
