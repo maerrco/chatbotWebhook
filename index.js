@@ -29,7 +29,7 @@ restService.post("/echo", function(req, res) {
 
 restService.post("/sdpFailed", function(req, res) {
   var speech = "";
-  switch (req.body.result.parameters.Major.toLowerCase()) {
+  switch (req.body.result.parameters.chosenMajor.toLowerCase()) {
     //Speech Synthesis Markup Language 
     case "software development":
       speech =
