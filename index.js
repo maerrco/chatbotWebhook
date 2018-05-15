@@ -22,11 +22,13 @@ restService.post("/sdpFailed", function(req, res) {
   var chosenPaper = papers.find(function (obj) { return obj.paperName === req.body.result.parameters.paper; });
   var majorVariable = chosenPaper[req.body.result.parameters.chosenMajor.toLowerCase()];
   
-  if(majorVariable == "-") {
-        speech = 'unfortunately, ' + chosenPaper.paperName + ' is a compulsary paper in your major. If you want to graduate in this major you will have to repeat '+ chosenPaper.paperName; 
-  }
-  else {
-        speech = 'Sorry, I only know about papers in the Computer Science Course :('
+  if(req.body.result.action == "failedPaper") { 
+    if(majorVariable == "-") {
+          speech = 'unfortunately, ' + chosenPaper.paperName + ' is a compulsary paper in your major. If you want to graduate in this major you will have to repeat '+ chosenPaper.paperName; 
+    }
+    else {
+          speech = 'Sorry, I only know about papers in the Computer Science Course :('
+    }
   }
   
   return res.json({
