@@ -50,9 +50,9 @@ restService.post("/sdpFailed", function(req, res) {
   
   var speech = "";
   var chosenPaper = papers.find(function (obj) { return obj.paperName === req.body.result.parameters.paper; });
-  var chosenMajor = papers[req.body.result.parameters.chosenMajor.toLowerCase()];
+  var majorVariable = papers[req.body.result.parameters.chosenMajor.toLowerCase()];
   
-  if(chosenMajor == "-") {
+  if(majorVariable == "-") {
     switch (req.body.result.parameters.chosenMajor.toLowerCase()) {
       //Speech Synthesis Markup Language 
       case "sd":
