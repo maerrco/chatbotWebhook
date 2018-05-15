@@ -38,7 +38,7 @@ restService.post("/sdpFailed", function(req, res) {
   if(req.body.result.action == "requestRequisites") {
     var chosenPaper = papers.find(function (obj) { return obj.paperName === req.body.result.parameters.paper; });
     
-    if((req.body.result.paramaters.requisites1 == "pre-requisites") && (req.body.result.paramaters.requisites2 == "co-requisites")) {
+    if(req.body.result.paramaters.requisites1 == "pre-requisites") {
       speech = chosenPaper.paperName + ' has, ' + chosenPaper.preReq + " and " +  chosenPaper.coReq;
     }
     else if((req.body.result.paramaters.requisites1 == "") && (req.body.result.paramaters.requisites2 == "co-requisites")) {
