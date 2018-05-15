@@ -40,15 +40,15 @@ restService.post("/sdpFailed", function(req, res) {
     var req1 = req.body.result.parameters.requisites1;
     var req2 = req.body.result.parameters.requisites2;
     
-    if(req1 != "pre-requisites") {
+    if(req1 == "pre-requisites" && req2 == "co-requisites") {
       speech = chosenPaper.paperName + ' has,\n' + chosenPaper.preReq + " and " +  chosenPaper.coreq;
     }
-//     else if((req.body.result.paramaters.requisites1 == "") && (req.body.result.paramaters.requisites2 == "co-requisites")) {
-//       speech = chosenPaper.paperName + ' has, ' + chosenPaper.coReq;
-//     }
-//     else if((req.body.result.paramaters.requisites1 == "pre-requisites") && (req.body.result.paramaters.requisites2 == "")) {
-//       speech = chosenPaper.paperName + ' has, ' + chosenPaper.preReq;
-//     }
+    else if(req1 == "co-requisites") {
+      speech = chosenPaper.paperName + ' has, ' + chosenPaper.coreq;
+    }
+    else if(req1 == "pre-requisites") {
+      speech = chosenPaper.paperName + ' has, ' + chosenPaper.preReq;
+    }
   }
   
   return res.json({
