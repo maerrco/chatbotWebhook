@@ -58,7 +58,7 @@ restService.post("/sdpFailed", function(req, res) {
   
   var chosenMajor = req.body.result.parameters.chosenMajor.toLowerCase();
   
-  if(chosenPaper.sd == "-") {
+  if(chosenPaper.chosenMajor == "-") {
         speech = chosenPaper + ' is needed for second year of the ' + chosenMajor + 'major. Since you failed it, im afraid you will have to repeat it if you want to continue with this major.';
     }
   }
