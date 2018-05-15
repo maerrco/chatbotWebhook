@@ -53,19 +53,13 @@ restService.post("/sdpFailed", function(req, res) {
   var majorVariable = chosenPaper[req.body.result.parameters.chosenMajor.toLowerCase()];
   
   if(majorVariable == "-") {
-        speech = chosenPaper.paperName + majorVariable; 
+        speech = 'unfortunately, ' + chosenPaper.paperName + 'is a compulsary paper in your major. If you want to graduate in this major you will have to repeat '+ chosenPaper.paperName; 
   }
   
-  else if(req.body.result.parameters.paper == "ense701") {
-    switch (req.body.result.parameters.chosenMajor.toLowerCase()) {
-      //Speech Synthesis Markup Language 
-      case "sd":
-        speech =
-          'You have 2 options:';
-        break;
-    }
+  else {
+        speech = 'Sorry, I only know about papers in the Computer Science Course :('
   }
-  else {}
+  
   return res.json({
     speech: speech,
     displayText: speech,
