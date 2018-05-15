@@ -2,7 +2,6 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-
 const restService = express();
 
 restService.use(
@@ -13,9 +12,40 @@ restService.use(
 
 restService.use(bodyParser.json());
 
+    var comp602 = { paperName: "comp602",
+                    preReq: "comp603, comp610",
+                    coreq: "comp600",
+                    softwareDevelopment: "-",
+                    networking: "none",
+                    iss: "none",
+                    computerScience: "none",
+                    ci: "none",
+                    analytics: "none" };
+    var ense701 = { paperName: "ense701",
+                    preReq: "comp603, comp610",
+                    coreq: "comp600",
+                    softwareDevelopment: "-",
+                    networking: "none",
+                    iss: "none",
+                    computerScience: "none",
+                    ci: "none",
+                    analytics: "none" };
+
+     
+var papers = new Array();
+papers.push(comp602);
+papers.push(ense701);
+
 
 restService.post("/sdpFailed", function(req, res) {
+  //store papers with their corresponding papers
   var speech = "";
+  
+  var chosenPaper = papers.filter(function( obj ) {
+    return obj. == 6;
+  });
+  
+  
   if(req.body.result.parameters.paper == "comp602") {
     switch (req.body.result.parameters.chosenMajor.toLowerCase()) {
       //Speech Synthesis Markup Language 
