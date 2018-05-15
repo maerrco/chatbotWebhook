@@ -19,12 +19,24 @@ restService.post("/sdpFailed", function(req, res) {
                  { paperName: "comp501", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
                  { paperName: "comp502", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
                  { paperName: "comp503", preReq: "Either Pre Requisite: comp500 or ense501", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "comp600", preReq: "no pre-requisites", year: "Year 2", coreq: "no co-requisites", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
                  { paperName: "comp602", preReq: "Either Pre Requisite: comp603 or comp610", year: "Year 2", coreq: "Co Requisites: comp600", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "comp603", preReq: "Either Pre Requisite: comp503 or comp610 or ense501", year: "Year 2", coreq: "no co-requisites", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "comp604", preReq: "Pre Requisite: comp502 and either one of comp503 or ense502", year: "Year 2", coreq: "no co-requisites", sd: "+", ns: "none", iss: "none", cs: "none", ci: "none", als: "none", options: "Infs602" },
+                 { paperName: "comp704", preReq: "no pre-requisites", year: "Year 3", coreq: "no co-requisites", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "comp713", preReq: "Pre Requisite: comp611", year: "Year 3", coreq: "no co-requisites", sd: "+", ns: "none", iss: "none", cs: "none", ci: "none", als: "none", options: "comp721" },
+                 { paperName: "comp719", preReq: "no pre-requisites", year: "Year 3", coreq: "no co-requisites", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "comp721", preReq: "Pre Requisite: comp603", year: "Year 3", coreq: "no co-requisites", sd: "+", ns: "none", iss: "none", cs: "none", ci: "none", als: "none", options: "comp713" },
                  { paperName: "enel504", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
                  { paperName: "ense701", preReq: "Either Pre Requisite: comp603 or comp610", year: "Year 3", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
                  { paperName: "infs500", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
-                 { paperName: "math500", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "+", ns: "none", iss: "none", cs: "none", ci: "none", als: "none", options: "Math501, Math502, Stat500" }
-                 
+                 { paperName: "infs600", preReq: "Either Pre Requisite: comp500 or ense501", year: "Year 2", coreq: "no co-requisites", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "infs601", preReq: "Either Pre Requisite: comp500 or ense501", year: "Year 2", coreq: "no co-requisites", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "infs602", preReq: "Pre Requisite: infs601 and either one of comp503 or ense502", year: "Year 2", coreq: "no co-requisites", sd: "+", ns: "none", iss: "none", cs: "none", ci: "none", als: "none", options: "Comp604" },
+                 { paperName: "math500", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "+", ns: "none", iss: "none", cs: "none", ci: "none", als: "none", options: "Math501, Math502, Stat500" },
+                 { paperName: "math501", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "+", ns: "none", iss: "none", cs: "none", ci: "none", als: "none", options: "Math500, Math502, Stat500" },
+                 { paperName: "math502", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "+", ns: "none", iss: "none", cs: "none", ci: "none", als: "none", options: "Math500, Math501, Stat500" },
+                 { paperName: "stat500", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "+", ns: "none", iss: "none", cs: "none", ci: "none", als: "none", options: "Math500, Math501, Math502" }
                 ]
    
    var chosenPaper = papers.find(function (obj) { return obj.paperName === req.body.result.parameters.paper; });
