@@ -50,7 +50,7 @@ restService.post("/sdpFailed", function(req, res) {
   
   var speech = "";
   var chosenPaper = papers.find(function (obj) { return obj.paperName === req.body.result.parameters.paper; });
-  var majorVariable = papers[req.body.result.parameters.chosenMajor.toLowerCase()];
+  var majorVariable = chosenPaper[req.body.result.parameters.chosenMajor.toLowerCase()];
   
   if(majorVariable == "-") {
         speech = chosenPaper.paperName + majorVariable; 
