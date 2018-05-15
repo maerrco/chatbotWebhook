@@ -2,8 +2,32 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-
 const restService = express();
+var comp602 = { paperName: "comp602",
+                    preReq: "comp603, comp610",
+                    coreq: "comp600",
+                    softwareDevelopment: "-",
+                    networking: "none",
+                    iss: "none",
+                    computerScience: "none",
+                    ci: "none",
+                    analytics: "none" };
+    var ense701 = { paperName: "ense701",
+                    preReq: "comp603, comp610",
+                    coreq: "comp600",
+                    softwareDevelopment: "-",
+                    networking: "none",
+                    iss: "none",
+                    computerScience: "none",
+                    ci: "none",
+                    analytics: "none" };
+
+     
+var papers = new Array();
+papers.push(comp602);
+papers.push(ense701);
+
+
 
 restService.use(
   bodyParser.urlencoded({
@@ -29,7 +53,12 @@ restService.post("/echo", function(req, res) {
 
 restService.post("/sdpFailed", function(req, res) {
   var speech = "";
-  if(req.body.result.parameters.paper == "comp602") {
+  
+  var chosenPaper = papers.filter(function( obj ) {
+    return obj.paperName == req.body.result.parameters.paper;
+  });
+  
+  if(req.body.result.parameters.paper == chosenPaper.paperName) {
     switch (req.body.result.parameters.chosenMajor.toLowerCase()) {
       //Speech Synthesis Markup Language 
       case "software development":
