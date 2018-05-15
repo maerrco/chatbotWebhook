@@ -51,7 +51,7 @@ restService.post("/sdpFailed", function(req, res) {
   var speech = "";
   var chosenPaper = papers.find(function (obj) { return obj.paperName === req.body.result.parameters.paper; });
   
-  if(chosenPaper == "comp602") {
+  if(chosenPaper.paperName == "comp602") {
     switch (req.body.result.parameters.chosenMajor.toLowerCase()) {
       //Speech Synthesis Markup Language 
       case "sd":
