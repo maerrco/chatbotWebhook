@@ -63,7 +63,7 @@ restService.post("/sdpFailed", function(req, res) {
 //     }
 //   }
                  
-  else if(req.body.result.parameters.paper == "ense701") {
+  if(req.body.result.parameters.paper == "ense701") {
     switch (req.body.result.parameters.chosenMajor.toLowerCase()) {
       //Speech Synthesis Markup Language 
       case "software development":
