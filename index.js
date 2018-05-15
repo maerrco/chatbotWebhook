@@ -3,24 +3,24 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const restService = express();
-var comp602 = { paperName: "comp602",
+    var comp602 = { paperName: "comp602",
                     preReq: "comp603, comp610",
                     coreq: "comp600",
-                    softwareDevelopment: "-",
-                    networking: "none",
+                    sd: "-",
+                    ns: "none",
                     iss: "none",
-                    computerScience: "none",
+                    cs: "none",
                     ci: "none",
-                    analytics: "none" };
+                    als: "none" };
     var ense701 = { paperName: "ense701",
                     preReq: "comp603, comp610",
                     coreq: "comp600",
-                    softwareDevelopment: "-",
-                    networking: "none",
+                    sd: "-",
+                    ns: "none",
                     iss: "none",
-                    computerScience: "none",
+                    cs: "none",
                     ci: "none",
-                    analytics: "none" };
+                    als: "none" };
 
      
 var papers = new Array();
@@ -58,15 +58,13 @@ restService.post("/sdpFailed", function(req, res) {
     return obj.paperName == req.body.result.parameters.paper;
   });
   
-  if(req.body.result.parameters.paper == chosenPaper.paperName) {
-    switch (req.body.result.parameters.chosenMajor.toLowerCase()) {
-      //Speech Synthesis Markup Language 
-      case "software development":
-        speech =
-          'COMP602 (Software Development Practice) is needed for second year of the Software Development major. Since you failed it, im afraid you will have to repeat it if you want to continue with this major.';
-        break;
+  var chosenMajor = req.body.result.parameters.chosenMajor.toLowerCase();
+  
+  if(chosenPaper.chosenMajor == "-") {
+        speech = chosenPaper + ' is needed for second year of the ' + chosenMajor + 'major. Since you failed it, im afraid you will have to repeat it if you want to continue with this major.';
     }
   }
+                 
   else if(req.body.result.parameters.paper == "ense701") {
     switch (req.body.result.parameters.chosenMajor.toLowerCase()) {
       //Speech Synthesis Markup Language 
