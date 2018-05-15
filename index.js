@@ -35,7 +35,7 @@ restService.post("/sdpFailed", function(req, res) {
     }
   }
   
-  else if(req.body.result.action == "requestRequisites") {
+  if(req.body.result.action == "requestRequisites") {
     var chosenPaper = papers.find(function (obj) { return obj.paperName === req.body.result.parameters.paper; });
     
     if((req.body.result.paramaters.requisites1 == "pre-requisites") && (req.body.result.paramaters.requisites2 == "co-requisites")) {
