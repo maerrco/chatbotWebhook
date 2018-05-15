@@ -28,8 +28,30 @@ restService.post("/echo", function(req, res) {
 });
 
 restService.post("/sdpFailed", function(req, res) {
+   var papers = [{ paperName: "comp602",
+                    preReq: "comp603, comp610",
+                    coreq: "comp600",
+                    sd: "-",
+                    ns: "none",
+                    iss: "none",
+                    cs: "none",
+                    ci: "none",
+                    als: "none" },
+                    { paperName: "ense701",
+                    preReq: "comp603, comp610",
+                    coreq: "comp600",
+                    sd: "-",
+                    ns: "none",
+                    iss: "none",
+                    cs: "none",
+                    ci: "none",
+                    als: "none" }
+                    ]
+  
   var speech = "";
-  if(req.body.result.parameters.paper == "comp602") {
+  var chosenPaper = papers.find(function (obj) { return obj.paperName === req.body.result.parameters.paper; });
+  
+  if(chosenPaper == "comp602") {
     switch (req.body.result.parameters.chosenMajor.toLowerCase()) {
       //Speech Synthesis Markup Language 
       case "sd":
