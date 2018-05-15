@@ -32,7 +32,7 @@ restService.post("/sdpFailed", function(req, res) {
   if(req.body.result.parameters.paper == "comp602") {
     switch (req.body.result.parameters.chosenMajor.toLowerCase()) {
       //Speech Synthesis Markup Language 
-      case "software development":
+      case "sd":
         speech =
           'COMP602 (Software Development Practice) is needed for second year of the Software Development major. Since you failed it, im afraid you will have to repeat it if you want to continue with this major.';
         break;
@@ -41,7 +41,7 @@ restService.post("/sdpFailed", function(req, res) {
   else if(req.body.result.parameters.paper == "ense701") {
     switch (req.body.result.parameters.chosenMajor.toLowerCase()) {
       //Speech Synthesis Markup Language 
-      case "software development":
+      case "sd":
         speech =
           'You have 2 options:';
         break;
