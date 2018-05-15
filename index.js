@@ -3,32 +3,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const restService = express();
-    var comp602 = { paperName: "comp602",
-                    preReq: "comp603, comp610",
-                    coreq: "comp600",
-                    sd: "-",
-                    ns: "none",
-                    iss: "none",
-                    cs: "none",
-                    ci: "none",
-                    als: "none" };
-    var ense701 = { paperName: "ense701",
-                    preReq: "comp603, comp610",
-                    coreq: "comp600",
-                    sd: "-",
-                    ns: "none",
-                    iss: "none",
-                    cs: "none",
-                    ci: "none",
-                    als: "none" };
-
-     
-var papers = new Array();
-papers.push(comp602);
-papers.push(ense701);
-
-
-
 restService.use(
   bodyParser.urlencoded({
     extended: true
@@ -52,6 +26,30 @@ restService.post("/echo", function(req, res) {
 });
 
 restService.post("/sdpFailed", function(req, res) {
+    var comp602 = { paperName: "comp602",
+                    preReq: "comp603, comp610",
+                    coreq: "comp600",
+                    sd: "-",
+                    ns: "none",
+                    iss: "none",
+                    cs: "none",
+                    ci: "none",
+                    als: "none" };
+    var ense701 = { paperName: "ense701",
+                    preReq: "comp603, comp610",
+                    coreq: "comp600",
+                    sd: "-",
+                    ns: "none",
+                    iss: "none",
+                    cs: "none",
+                    ci: "none",
+                    als: "none" };
+
+     
+    var papers = new Array();
+    papers.push(comp602);
+    papers.push(ense701);
+    
   var speech = "";
   
   var chosenPaper = papers.filter(function( obj ) {
