@@ -14,8 +14,16 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/sdpFailed", function(req, res) {
-   var papers = [{ paperName: "comp602", preReq: "Pre Requisites: comp603, comp610", coreq: "Co Requisites: comp600", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
-                 { paperName: "ense701", preReq: "Pre Requisites: comp603, comp610", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" }
+   var papers = [{ paperName: "comm501", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "comp500", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "comp501", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "comp502", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "comp503", preReq: "Either Pre Requisite: comp500 or ense501", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "comp602", preReq: "Pre Requisites: comp603, comp610", year: "Year 2", coreq: "Co Requisites: comp600", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "enel504", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "ense701", preReq: "Pre Requisites: comp603, comp610", year: "Year 3", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "infs500", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" }
+                 
                 ]
    
    var chosenPaper = papers.find(function (obj) { return obj.paperName === req.body.result.parameters.paper; });
@@ -26,7 +34,7 @@ restService.post("/sdpFailed", function(req, res) {
     var majorVariable = chosenPaper[req.body.result.parameters.chosenMajor.toLowerCase()];
     
     if(majorVariable == "-") {
-      speech = 'Unfortunately, ' + chosenPaper.paperName + ' is a compulsary paper in your major. If you want to graduate in this major you will have to repeat '+ chosenPaper.paperName; 
+      speech = 'Unfortunately, ' + chosenPaper.paperName + ' is a compulsary paper for ' + chosenPaper.year + ' of your major. If you want to graduate in this major you will have to repeat '+ chosenPaper.paperName; 
     }
     else if(majorVariable == "none") {
       speech = 'This paper is not part of your major, you shouldnt have to be doing ' + chosenPaper.paperName;
