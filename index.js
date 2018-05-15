@@ -37,7 +37,12 @@ restService.post("/sdpFailed", function(req, res) {
   }
   
   if(req.body.result.action == "requestRequisites") {
+    var req1 = req.body.result.paramaters.requisites1;
+    var req2 = req.body.result.paramaters.requisites2;
+    
+    if(req1 != "pre-requisites") {
       speech = chosenPaper.paperName + ' has,\n' + chosenPaper.preReq + " and " +  chosenPaper.coreq;
+    }
 //     else if((req.body.result.paramaters.requisites1 == "") && (req.body.result.paramaters.requisites2 == "co-requisites")) {
 //       speech = chosenPaper.paperName + ' has, ' + chosenPaper.coReq;
 //     }
