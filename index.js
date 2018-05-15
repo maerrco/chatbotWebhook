@@ -65,7 +65,7 @@ restService.post("/sdpFailed", function(req, res) {
     var req2 = req.body.result.parameters.requisites2;
     
     if(req1 == "pre-requisites" && req2 == "co-requisites") {
-      speech = chosenPaper.paperName + ' has \n' + chosenPaper.preReq + " and " +  chosenPaper.coreq;
+      speech = chosenPaper.paperName + ' can be taken by completing \n' + chosenPaper.preReq + " and " +  chosenPaper.coreq;
     }
     else if(req1 == "co-requisites") {
       speech = chosenPaper.paperName + ' has \n' + chosenPaper.coreq;
