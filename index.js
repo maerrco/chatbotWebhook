@@ -53,14 +53,9 @@ restService.post("/sdpFailed", function(req, res) {
   var majorVariable = papers[req.body.result.parameters.chosenMajor.toLowerCase()];
   
   if(majorVariable == "-") {
-    switch (req.body.result.parameters.chosenMajor.toLowerCase()) {
-      //Speech Synthesis Markup Language 
-      case "sd":
-        speech =
-          'COMP602 (Software Development Practice) is needed for second year of the Software Development major. Since you failed it, im afraid you will have to repeat it if you want to continue with this major.';
-        break;
-    }
+        speech = chosenPaper.paperName + majorVariable; 
   }
+  
   else if(req.body.result.parameters.paper == "ense701") {
     switch (req.body.result.parameters.chosenMajor.toLowerCase()) {
       //Speech Synthesis Markup Language 
