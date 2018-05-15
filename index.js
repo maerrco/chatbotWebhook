@@ -37,7 +37,7 @@ restService.post("/sdpFailed", function(req, res) {
   }
   
   if(req.body.result.action == "requestRequisites") {
-    if(typeof req.body.result.paramaters.requisites1 !== 'undefined') {
+    if(typeof (req.body.result.paramaters.requisites2) == 'undefined') {
       speech = chosenPaper.paperName + ' has, ' + chosenPaper.preReq + " and " +  chosenPaper.coReq;
     }
 //     else if((req.body.result.paramaters.requisites1 == "") && (req.body.result.paramaters.requisites2 == "co-requisites")) {
