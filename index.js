@@ -17,11 +17,12 @@ restService.post("/sdpFailed", function(req, res) {
    var papers = [{ paperName: "comp602", preReq: "Pre Requisites: comp603, comp610", coreq: "Co Requisites: comp600", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
                  { paperName: "ense701", preReq: "Pre Requisites: comp603, comp610", coreq: "There are no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" }
                 ]
+   
+   var chosenPaper = papers.find(function (obj) { return obj.paperName === req.body.result.parameters.paper; });
   
   var speech = "";
   
   if(req.body.result.action == "failedPaper") { 
-    var chosenPaper = papers.find(function (obj) { return obj.paperName === req.body.result.parameters.paper; });
     var majorVariable = chosenPaper[req.body.result.parameters.chosenMajor.toLowerCase()];
     
     if(majorVariable == "-") {
@@ -36,17 +37,13 @@ restService.post("/sdpFailed", function(req, res) {
   }
   
   if(req.body.result.action == "requestRequisites") {
-    var chosenPaper = papers.find(function (obj) { return obj.paperName === req.body.result.parameters.paper; });
-    
-    if(req.body.result.paramaters.requisites1 == "pre-requisites") {
       speech = chosenPaper.paperName + ' has, ' + chosenPaper.preReq + " and " +  chosenPaper.coReq;
-    }
-    else if((req.body.result.paramaters.requisites1 == "") && (req.body.result.paramaters.requisites2 == "co-requisites")) {
-      speech = chosenPaper.paperName + ' has, ' + chosenPaper.coReq;
-    }
-    else if((req.body.result.paramaters.requisites1 == "pre-requisites") && (req.body.result.paramaters.requisites2 == "")) {
-      speech = chosenPaper.paperName + ' has, ' + chosenPaper.preReq;
-    }
+//     else if((req.body.result.paramaters.requisites1 == "") && (req.body.result.paramaters.requisites2 == "co-requisites")) {
+//       speech = chosenPaper.paperName + ' has, ' + chosenPaper.coReq;
+//     }
+//     else if((req.body.result.paramaters.requisites1 == "pre-requisites") && (req.body.result.paramaters.requisites2 == "")) {
+//       speech = chosenPaper.paperName + ' has, ' + chosenPaper.preReq;
+//     }
   }
   
   return res.json({
