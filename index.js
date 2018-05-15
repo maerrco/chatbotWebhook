@@ -38,13 +38,13 @@ restService.post("/sdpFailed", function(req, res) {
   else if(req.body.result.action == "requestRequisites") {
     var chosenPaper = papers.find(function (obj) { return obj.paperName === req.body.result.parameters.paper; });
     
-    if(typeof req.body.result.paramaters.requisites1 != 'undefined' && typeof req.body.result.paramaters.requisites2 != 'undefined') {
+    if(typeof req.body.result.paramaters.requisites1 == "pre-requisites" && typeof req.body.result.paramaters.requisites2 == "co-requisites") {
       speech = 'chosenPaper.paperName has, ' + chosenPaper.preReq + " and " +  chosenPaper.coReq;
     }
-    else if(typeof req.body.result.paramaters.requisites1 == 'undefined' && typeof req.body.result.paramaters.requisites2 != 'undefined') {
+    else if(typeof req.body.result.paramaters.requisites1 == "" && typeof req.body.result.paramaters.requisites2 == "co-requisites") {
       speech = 'chosenPaper.paperName has, ' + chosenPaper.coReq;
     }
-    else if(typeof req.body.result.paramaters.requisites1 != 'undefined' && typeof req.body.result.paramaters.requisites2 == 'undefined') {
+    else if(typeof req.body.result.paramaters.requisites1 == "pre-requisites" && typeof req.body.result.paramaters.requisites2 == "") {
       speech = 'chosenPaper.paperName has, ' + chosenPaper.preReq;
     }
   }
