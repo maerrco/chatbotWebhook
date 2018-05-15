@@ -15,7 +15,7 @@ restService.use(bodyParser.json());
 
 restService.post("/sdpFailed", function(req, res) {
    var papers = [{ paperName: "comp602", preReq: "Pre Requisites: comp603, comp610", coreq: "Co Requisites: comp600", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
-                 { paperName: "ense701", preReq: "Pre Requisites: comp603, comp610", coreq: "There are no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" }
+                 { paperName: "ense701", preReq: "Pre Requisites: comp603, comp610", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" }
                 ]
    
    var chosenPaper = papers.find(function (obj) { return obj.paperName === req.body.result.parameters.paper; });
@@ -41,13 +41,13 @@ restService.post("/sdpFailed", function(req, res) {
     var req2 = req.body.result.parameters.requisites2;
     
     if(req1 == "pre-requisites" && req2 == "co-requisites") {
-      speech = chosenPaper.paperName + ' has,\n' + chosenPaper.preReq + " and " +  chosenPaper.coreq;
+      speech = chosenPaper.paperName + ' has \n' + chosenPaper.preReq + " and " +  chosenPaper.coreq;
     }
     else if(req1 == "co-requisites") {
-      speech = chosenPaper.paperName + ' has, ' + chosenPaper.coreq;
+      speech = chosenPaper.paperName + ' has \n' + chosenPaper.coreq;
     }
     else if(req1 == "pre-requisites") {
-      speech = chosenPaper.paperName + ' has, ' + chosenPaper.preReq;
+      speech = chosenPaper.paperName + ' has \n' + chosenPaper.preReq;
     }
   }
   
