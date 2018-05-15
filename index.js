@@ -19,10 +19,11 @@ restService.post("/sdpFailed", function(req, res) {
                  { paperName: "comp501", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
                  { paperName: "comp502", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
                  { paperName: "comp503", preReq: "Either Pre Requisite: comp500 or ense501", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
-                 { paperName: "comp602", preReq: "Pre Requisites: comp603, comp610", year: "Year 2", coreq: "Co Requisites: comp600", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "comp602", preReq: "Either Pre Requisite: comp603 or comp610", year: "Year 2", coreq: "Co Requisites: comp600", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
                  { paperName: "enel504", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
-                 { paperName: "ense701", preReq: "Pre Requisites: comp603, comp610", year: "Year 3", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
-                 { paperName: "infs500", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" }
+                 { paperName: "ense701", preReq: "Either Pre Requisite: comp603 or comp610", year: "Year 3", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "infs500", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "-", ns: "none", iss: "none", cs: "none", ci: "none", als: "none" },
+                 { paperName: "math500", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "+", ns: "none", iss: "none", cs: "none", ci: "none", als: "none", options: "Math501, Math502, Stat500" }
                  
                 ]
    
@@ -39,6 +40,9 @@ restService.post("/sdpFailed", function(req, res) {
     else if(majorVariable == "none") {
       speech = 'This paper is not part of your major, you shouldnt have to be doing ' + chosenPaper.paperName;
     }
+    else if(majorVariable == "+") {
+      speech = chosenPaper.paperName + ' is not compulsary for your major. you can still take either of these ' + chosenPaper.year + ' papers if you want to continue with your major: ' + chosenPaper.options;
+    }      
     else {
       speech = 'Sorry, I only know about papers in the Computer Science Course :('
     }
