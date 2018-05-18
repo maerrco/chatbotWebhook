@@ -63,6 +63,8 @@ restService.post("/sdpFailed", function(req, res) {
   if(req.body.result.action == "requestRequisites") {
     var req1 = req.body.result.parameters.requisites1;
     var req2 = req.body.result.parameters.requisites2;
+    var req3 = req.body.result.parameters.requisitesFromSmallTalk1;
+    var req4 = req.body.result.parameters.requisitesFromSmallTalk2;
     
     if(req1 == "pre-requisites" && req2 == "co-requisites") {
       speech = chosenPaper.paperName + ' has \n' + chosenPaper.preReq + " and " +  chosenPaper.coreq;
@@ -71,6 +73,15 @@ restService.post("/sdpFailed", function(req, res) {
       speech = chosenPaper.paperName + ' has \n' + chosenPaper.coreq;
     }
     else if(req1 == "pre-requisites") {
+      speech = chosenPaper.paperName + ' has \n' + chosenPaper.preReq;
+    }
+    else if(req3 == "pre-requisites" && req4 == "co-requisites") {
+      speech = chosenPaper.paperName + ' has \n' + chosenPaper.preReq + " and " +  chosenPaper.coreq;
+    }
+    else if(req3 == "co-requisites") {
+      speech = chosenPaper.paperName + ' has \n' + chosenPaper.coreq;
+    }
+    else if(req3 == "pre-requisites") {
       speech = chosenPaper.paperName + ' has \n' + chosenPaper.preReq;
     }
   }
