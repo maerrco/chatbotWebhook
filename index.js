@@ -90,7 +90,7 @@ restService.post("/sdpFailed", function(req, res) {
     if(chosenPaper == null) {
       speech = "are you wanting to know about a paper? if so, i'm not sure what paper you're talking about";
     }
-    speech = chosenPaper.paperName + "is " + chosenPaper.description;
+    speech = chosenPaper.paperName + " is " + chosenPaper.description;
   }
      
   
