@@ -60,7 +60,7 @@ restService.post("/sdpFailed", function(req, res) {
     }
   }
   
-  if(req.body.result.action == "requestRequisites") {
+  else if(req.body.result.action == "requestRequisites") {
     var req1 = req.body.result.parameters.requisites1;
     var req2 = req.body.result.parameters.requisites2;
     var req3 = req.body.result.parameters.requisitesFromSmallTalk1;
@@ -86,17 +86,17 @@ restService.post("/sdpFailed", function(req, res) {
     }
   }
   
-  if(req.body.result.action == "requestSemester") {
+  else if(req.body.result.action == "requestSemester") {
     if(chosenPaper == null) {
       speech = "are you needing to know the semesters for a specific paper? if so, please specify that paper mate."\;
     }
-    if(chosenPaper.sem == "both") {
+    else if(chosenPaper.sem == "both") {
        speech = chosenPaper.paperName + " is actually offered in both semester 1 and 2";
     }
-    if(chosenPaper.sem == "1") {
+    else if(chosenPaper.sem == "1") {
         speech = "the paper, " + chosenPaper.paperName + " can only be taken in semester one";
     }
-    if(chosenPaper.sem == "2") {
+    else if(chosenPaper.sem == "2") {
       speech = chosenPaper.paperName + " is a paper that can only be taken in sem 2";
     }
     else {
@@ -105,7 +105,7 @@ restService.post("/sdpFailed", function(req, res) {
 
   }
   
-  if(req.body.result.action == "describePaper") {
+  else if(req.body.result.action == "describePaper") {
     if(chosenPaper == null) {
       speech = "are you wanting to know about a paper? if so, i'm not sure what paper you're talking about";
     }
