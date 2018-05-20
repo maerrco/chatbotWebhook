@@ -87,10 +87,7 @@ restService.post("/sdpFailed", function(req, res) {
   }
   
   else if(req.body.result.action == "requestSemester") {
-    if(chosenPaper == null) {
-      speech = "are you needing to know the semesters for a specific paper? if so, please specify that paper mate."\;
-    }
-    else if(chosenPaper.sem == "both") {
+    if(chosenPaper.sem == "both") {
        speech = chosenPaper.paperName + " is actually offered in both semester 1 and 2";
     }
     else if(chosenPaper.sem == "1") {
