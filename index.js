@@ -92,6 +92,25 @@ restService.post("/sdpFailed", function(req, res) {
     }
     speech = chosenPaper.paperName + " is a " + chosenPaper.year + " paper known as: " + chosenPaper.description;
   }
+  
+  if(req.body.result.action == "requestSemester") {
+	    if(chosenPaper == null) {
+	      speech = "are you needing to know the semesters for a specific paper? if so, please specify that paper mate."\;
+	    }
+	    if(chosenPaper.sem == "both") {
+	       speech = chosenPaper.paperName + " is actually offered in both semester 1 and 2";
+	    }
+	    if(chosenPaper.sem == "1") {
+	        speech = "the paper, " + chosenPaper.paperName + " can only be taken in semester one";
+	    }
+	    if(chosenPaper.sem == "2") {
+	      speech = chosenPaper.paperName + " is a paper that can only be taken in sem 2";
+	    }
+	    else {
+	      speech = "I didn't quite understand your question, could you please be more specific?";
+	    }
+	  }
+
      
   
   return res.json({
