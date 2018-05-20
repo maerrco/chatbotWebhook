@@ -39,7 +39,11 @@ restService.post("/sdpFailed", function(req, res) {
                  { paperName: "stat500", sem: "both", description: "Applied Statistics, An introduction to applied statistics. Provides techniques for describing and summarising a data set.", preReq: "no pre-requisites", year: "Year 1", coreq: "no co-requistes", sd: "+", ns: "none", iss: "none", cs: "none", ci: "none", als: "none", options: "Math500 or Math501 or Math502" }
                 ]
    
-   var chosenPaper = papers.find(function (obj) { return obj.paperName === req.body.result.parameters.paper; });
+  var chosenPaper = ""
+  if(req.body.result.parameters.paper != "") {
+    chosenPaper = papers.find(function (obj) { return obj.paperName === req.body.result.parameters.paper; });
+  }
+  else {}
   
   var speech = "";
   
