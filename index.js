@@ -87,18 +87,17 @@ restService.post("/sdpFailed", function(req, res) {
   }
   
   else if(req.body.result.action == "requestSemester") {
-    if(chosenPaper.sem == "both") {
-       speech = chosenPaper.paperName + " is actually offered in both semester 1 and 2";
-    }
-    else if(chosenPaper.sem == "1") {
-        speech = "the paper, " + chosenPaper.paperName + " can only be taken in semester one";
-    }
-    else if(chosenPaper.sem == "2") {
-      speech = chosenPaper.paperName + " is a paper that can only be taken in sem 2";
-    }
-    else {
-      speech = "I didn't quite understand your question, could you please be more specific?";
-    }
+    speech = "Are you needing to know which semester a paper can be offered in? if so, can you be more specific...";
+    
+      if(chosenPaper.sem == "both") {
+         speech = chosenPaper.paperName + " is actually offered in both semester 1 and 2";
+      }
+      else if(chosenPaper.sem == "1") {
+          speech = "the paper, " + chosenPaper.paperName + " can only be taken in semester one";
+      }
+      else if(chosenPaper.sem == "2") {
+        speech = chosenPaper.paperName + " is a paper that can only be taken in sem 2";
+      }
 
   }
   
