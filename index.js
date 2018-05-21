@@ -146,7 +146,7 @@ restService.post("/sdpFailed", function(req, res) {
         }
         else {}
       }
-      speech = "Nice! for that major, I would suggest taking: Year One papers: " + results1 + " Year Two papers: " + results2 + " Year Three papers: " + results3;
+      speech = "Nice! for that major, I would suggest taking: \r Year One papers: " + results1 + "\r Year Two papers: " + results2 + "\r Year Three papers: " + results3;
     }
     
     else {
