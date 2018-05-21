@@ -115,8 +115,9 @@ restService.post("/sdpFailed", function(req, res) {
   else if(req.body.result.action == "requestSuggestedPapers") {
     var paperArray = new Array();
     var chosenMajor = req.body.result.parameters.Major.toLowerCase();
-    
     var currentPaper;
+    
+    
     if(req.body.result.parameters.ChosenYear == "All") {
       for (var index = 0; index < papers.length; ++index) {
         currentPaper = papers[index];
@@ -153,16 +154,16 @@ restService.post("/sdpFailed", function(req, res) {
         }
         else {}
       }
-      var results = "";
-      for(var index = 0; index < paperArray.length; ++index){
-        if(index = paperArray.length-1) {
-          results = results + " and " + paperArray[index];
-        }
-        else {
-          results = results + paperArray[index] + ", ";
-        }
-      }
-      speech = "Here are the papers I would suggest you take for " + req.body.result.parameters.ChosenYear + " of your major: " + results;
+//       var results = "";
+//       for(var index = 0; index < paperArray.length; ++index){
+//         if(index = paperArray.length-1) {
+//           results = results + " and " + paperArray[index];
+//         }
+//         else {
+//           results = results + paperArray[index] + ", ";
+//         }
+//       }
+      speech = "Here are the papers I would suggest you take for " + req.body.result.parameters.ChosenYear + " of your major: " + paperArray.toString();
     }
   }
      
