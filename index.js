@@ -118,16 +118,26 @@ restService.post("/sdpFailed", function(req, res) {
     
     var arrayLength = papers.length;
     var currentPaper;
-    for (var index = 0; index < arrayLength; ++index) {
-      currentPaper = papers[index];
-      if(currentPaper[chosenMajor] == "-") {
-        paperArray.push(currentPaper.paperName)
+    if(req.body.result.parameters.ChosenYear == "All") {
+      for (var index = 0; index < arrayLength; ++index) {
+        currentPaper = papers[index];
+        if(currentPaper[chosenMajor] == "-") {
+          paperArray.push(currentPaper.paperName)
+        }
+        else {}
       }
-      else {}
+      speech = "I would suggest taking these papers: " + paperArray.toString();
     }
-    
-    speech = paperArray.toString();
-
+    else {
+      for (var index = 0; index < arrayLength; ++index) {
+        currentPaper = papers[index];
+        if(currentPaper[chosenMajor] == "-" && currentPaper["year"] == req.body.result.parameters.ChosenYear) {
+          paperArray.push(currentPaper.paperName)
+        }
+        else {}
+      }
+      speech = "Here are the papers I would suggest you take for " + req.body.result.parameters.ChosenYear + " of your major: " + paperArray.toString();
+    }
   }
      
   
