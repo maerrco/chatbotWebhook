@@ -111,6 +111,24 @@ restService.post("/sdpFailed", function(req, res) {
     }
     speech = chosenPaper.paperName + " is a " + chosenPaper.year + " paper known as: " + chosenPaper.description;
   }
+  
+  else if(req.body.result.action == "requestSuggestedPapers") {
+    var paperArray = new Array();
+    var chosenMajor = req.body.result.parameters.Major.toLowerCase();
+    
+    var arrayLength = papers.length;
+    var currentPaper;
+    for (var index = 0; index < arrayLength; ++index) {
+      currentPaper = papers[index];
+      if(currentPaper[chosenMajor] == "-") {
+        paperArray.push(currentPaper.paperName)
+      }
+      else {}
+    }
+    
+    speech = paperArray.toString();
+
+  }
      
   
   return res.json({
