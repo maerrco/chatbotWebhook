@@ -128,15 +128,17 @@ restService.post("/sdpFailed", function(req, res) {
       var results1 = "";
       var results2 = "";
       var results3 = "";
+      var testPaper;
       for(var index = 0; index < paperArray.length; ++index){
         currentPaper = paperArray[index];
-        if(currentPaper["year"] == "Year 1") {
+        testPaper = papers.find(function (obj) { return obj.paperName === currentPaper; });
+        if(testPaper.year == "Year 1") {
           results1 = results1 + currentPaper + " ";
         }
-        if(currentPaper["year"] == "Year 2") {
+        if(testPaper.year == "Year 2") {
           results2 = results2 + currentPaper + " ";
         }
-        if(currentPaper["year"] == "Year 3") {
+        if(testPaper.year == "Year 3") {
           results3 = results3 + currentPaper + " ";
         }
         else {}
@@ -144,7 +146,7 @@ restService.post("/sdpFailed", function(req, res) {
       speech = "Nice! for that major, I would suggest taking: Year One papers: " + results1 + " //  Year Two papers: " + results2 + " //  Year Three papers: " + results3;
     }
     else {
-      for (var index = 0; index < arrayLength; ++index) {
+      for (var index = 0; index < paperArray.length; ++index) {
         currentPaper = papers[index];
         if(currentPaper[chosenMajor] == "-" && currentPaper["year"] == req.body.result.parameters.ChosenYear) {
           paperArray.push(currentPaper.paperName)
