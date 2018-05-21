@@ -113,7 +113,7 @@ restService.post("/sdpFailed", function(req, res) {
   }
   
   else if(req.body.result.action == "requestSuggestedPapers") {
-    var paperArray = new Array();
+    var paperArray = [];
     var chosenMajor = req.body.result.parameters.Major.toLowerCase();
     
     var arrayLength = papers.length;
@@ -122,11 +122,25 @@ restService.post("/sdpFailed", function(req, res) {
       for (var index = 0; index < arrayLength; ++index) {
         currentPaper = papers[index];
         if(currentPaper[chosenMajor] == "-") {
-          paperArray.push(currentPaper.paperName)
+          paperArray.push([currentPaper.paperName, currentPaper.year]);
         }
         else {}
       }
-      speech = "I would suggest taking these papers: " + paperArray.toString();
+      var results1 = "";
+      var results2 = "";
+      var results3 = "";
+      for(var index = 0; index < paperArray.length; ++index){
+        if(currentPaper["year"] == "Year 1") {
+          results1 = results1 + paperArray[index] + " ";
+        }
+        if(currentPaper["year"] == "Year 2") {
+          results2 = results2 + paperArray[index] + " ";
+        }
+        if(currentPaper["year"] == "Year 3") {
+          results3 = results3 + paperArray[index] + " ";
+        }
+      }
+      speech = "Nice! for that major, I would suggest taking: Year One papers:" + results1 + "// Year Two papers: " + results2 + "// Year Three papers: " + results3;
     }
     else {
       for (var index = 0; index < arrayLength; ++index) {
@@ -138,7 +152,12 @@ restService.post("/sdpFailed", function(req, res) {
       }
       var results = "";
       for(var index = 0; index < paperArray.length; ++index){
-        results = results + paperArray[index] + " ";
+        if(index = paperArray.length-1) {
+          results = results + " and " + paperArray[index];
+        }
+        else {
+          results = results + paperArray[index] + ", ";
+        }
       }
       speech = "Here are the papers I would suggest you take for " + req.body.result.parameters.ChosenYear + " of your major: " + results;
     }
