@@ -130,7 +130,7 @@ restService.post("/sdpFailed", function(req, res) {
       var results2 = "";
       var results3 = "";
       for(var index = 0; index < paperArray.length; ++index){
-        currentPaper = papers[index];
+        currentPaper = paperArray[index];
         if(currentPaper["year"] == "Year 1") {
           results1 = results1 + paperArray[index] + " ";
         }
