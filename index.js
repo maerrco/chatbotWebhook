@@ -113,7 +113,7 @@ restService.post("/sdpFailed", function(req, res) {
   }
   
   else if(req.body.result.action == "requestSuggestedPapers") {
-    var paperArray = [];
+    var paperArray = new Array();
     var chosenMajor = req.body.result.parameters.Major.toLowerCase();
     
     var arrayLength = papers.length;
@@ -122,7 +122,7 @@ restService.post("/sdpFailed", function(req, res) {
       for (var index = 0; index < arrayLength; ++index) {
         currentPaper = papers[index];
         if(currentPaper[chosenMajor] == "-") {
-          paperArray.push([currentPaper.paperName, currentPaper.year]);
+          paperArray.push(currentPaper.paperName);
         }
         else {}
       }
@@ -130,15 +130,19 @@ restService.post("/sdpFailed", function(req, res) {
       var results2 = "";
       var results3 = "";
       for(var index = 0; index < paperArray.length; ++index){
-        if(currentPaper["year"] == "Year 1") {
-          results1 = results1 + paperArray[index] + " ";
+        currentPaper = papers[index];
+        if(currentPaper[chosenMajor] == "-") {
+          if(currentPaper["year"] == "Year 1") {
+            results1 = results1 + paperArray[index] + " ";
+          }
+          if(currentPaper["year"] == "Year 2") {
+            results2 = results2 + paperArray[index] + " ";
+          }
+          if(currentPaper["year"] == "Year 3") {
+            results3 = results3 + paperArray[index] + " ";
+          }
         }
-        if(currentPaper["year"] == "Year 2") {
-          results2 = results2 + paperArray[index] + " ";
-        }
-        if(currentPaper["year"] == "Year 3") {
-          results3 = results3 + paperArray[index] + " ";
-        }
+        else {}
       }
       speech = "Nice! for that major, I would suggest taking: Year One papers:" + results1 + "// Year Two papers: " + results2 + "// Year Three papers: " + results3;
     }
