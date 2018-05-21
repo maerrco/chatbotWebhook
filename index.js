@@ -131,21 +131,22 @@ restService.post("/sdpFailed", function(req, res) {
       var results2 = "";
       var results3 = "";
       var testPaper;
+      var currentPaper2;
       for(var index = 0; index < arrayLength2; ++index){
-        currentPaper = paperArray[index];
-        testPaper = papers.find(function (obj) { return obj.paperName === currentPaper["paperName"]; });
+        currentPaper2 = paperArray[index];
+        testPaper = papers.find(function (obj) { return obj.paperName === currentPaper2; });
         if(testPaper.year == "Year 1") {
-          results1 = results1 + currentPaper + " ";
+          results1 += currentPaper2 + " ";
         }
         if(testPaper.year == "Year 2") {
-          results2 = results2 + currentPaper + " ";
+          results2 += currentPaper2 + " ";
         }
         if(testPaper.year == "Year 3") {
-          results3 = results3 + currentPaper + " ";
+          results3 += currentPaper2 + " ";
         }
         else {}
       }
-      speech = "Nice! for that major, I would suggest taking: Year One papers: " + results1 + " //  Year Two papers: " + results2 + " //  Year Three papers: " + results3;
+      speech = "Nice! for that major, I would suggest taking: Year One papers: " + results1 + "<br> Year Two papers: " + results2 + "<br> Year Three papers: " + results3;
     }
     
     else {
