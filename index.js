@@ -126,7 +126,7 @@ restService.post("/sdpFailed", function(req, res) {
         }
         else {}
       }
-      var arrayLength2
+      var arrayLength2 = paperArray.length;
       var results1 = "";
       var results2 = "";
       var results3 = "";
@@ -146,7 +146,7 @@ restService.post("/sdpFailed", function(req, res) {
         }
         else {}
       }
-      speech = "Nice! for that major, I would suggest taking: Year One papers: " + results1 + "<br> Year Two papers: " + results2 + "<br> Year Three papers: " + results3;
+      speech = "Nice! for that major, I would suggest taking: Year One papers: " + results1 + " Year Two papers: " + results2 + " Year Three papers: " + results3;
     }
     
     else {
