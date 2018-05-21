@@ -133,7 +133,7 @@ restService.post("/sdpFailed", function(req, res) {
       var testPaper;
       for(var index = 0; index < arrayLength2; ++index){
         currentPaper = paperArray[index];
-        testPaper = papers.find(function (obj) { return obj.paperName === currentPaper; });
+        testPaper = papers.find(function (obj) { return obj.paperName == currentPaper; });
         if(testPaper.year == "Year 1") {
           results1 = results1 + currentPaper + " ";
         }
