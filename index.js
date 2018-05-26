@@ -162,7 +162,7 @@ restService.post("/sdpFailed", function(req, res) {
         currentPaper2 = paperArray[index];
         results += currentPaper2 + " ";
       }
-      speech = "Here are the papers I would suggest you take for " + req.body.result.parameters.ChosenYear + " of your major: " + results;
+      speech = "Here are the papers that are compulsary for " + req.body.result.parameters.ChosenYear + " of your major: " + results;
     }
   }
      
