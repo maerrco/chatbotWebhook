@@ -70,7 +70,7 @@ restService.post("/sdpFailed", function(req, res) {
     var req3 = req.body.result.parameters.requisitesFromSmallTalk1;
     var req4 = req.body.result.parameters.requisitesFromSmallTalk2;
     
-    if(req1 == "pre-requisites" && req2 == "co-requisites") {
+    if((req1 == "pre-requisites" && req2 == "co-requisites") || (req1 == "co-requisites" && req2 == "pre-requisites")) {
       speech = chosenPaper.paperName + ' has \n' + chosenPaper.preReq + " and " +  chosenPaper.coreq;
     }
     else if(req1 == "co-requisites") {
