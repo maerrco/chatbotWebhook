@@ -164,7 +164,7 @@ restService.post("/sdpFailed", function(req, res) {
         currentPaper2 = paperArray[index];
         results += currentPaper2 + " ";
       }
-      speech = "Here are the papers I would suggest you take for " + req.body.result.parameters.ChosenYear + " of your major: " + paperArray.toString();
+      speech = "Here are the papers I would suggest you take for " + req.body.result.parameters.ChosenYear + " of your major: " + results;
     }
   }
      
