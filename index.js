@@ -157,6 +157,13 @@ restService.post("/sdpFailed", function(req, res) {
         }
         else {}
       }
+      var arrayLength2 = paperArray.length;
+      var results = "";
+      var currentPaper2;
+      for(var index = 0; index < arrayLength2; ++index) {
+        currentPaper2 = paperArray[index];
+        results += currentPaper2 + " ";
+      }
       speech = "Here are the papers I would suggest you take for " + req.body.result.parameters.ChosenYear + " of your major: " + paperArray.toString();
     }
   }
