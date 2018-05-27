@@ -165,6 +165,23 @@ restService.post("/sdpFailed", function(req, res) {
       speech = "Here are the papers that are compulsary for " + req.body.result.parameters.ChosenYear + " of your major: " + results;
     }
   }
+  
+  
+  else if(req.body.result.action == "requestPapersforJob") {
+    var chosenJob = req.body.result.parameters.Job;    
+    var jobs = [{ job: "Computer Programmer", majorsAssociated: "Software Development"},
+                { job: "App Developer", majorsAssociated: "Software Development"},
+                { job: "Software Developer", majorsAssociated: "Software Development"},
+                { job: "Systems Analyst", majorsAssociated: "Software Development"},
+                { job: "Technology Consultant", majorsAssociated: "Software Development"},
+                { job: "Web Developer", majorsAssociated: "Software Development"},
+                { job: "Project Manager", majorsAssociated: "Software Development"},
+               ]
+    
+    var requestedJob = jobs.find(function (obj) { return obj.job === chosenJob; });
+    
+    speech = requestedJob.job + "s are commonly known to be studying " + requestedJob.job;
+  }
      
   
   return res.json({
