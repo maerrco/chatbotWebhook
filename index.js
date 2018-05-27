@@ -180,7 +180,7 @@ restService.post("/sdpFailed", function(req, res) {
     
     var requestedJob = jobs.find(function (obj) { return obj.job === chosenJob; });
     
-    speech = requestedJob.job + "s are commonly known to be studying " + requestedJob.job;
+    speech = requestedJob.job + "s are commonly known to be studying papers in the " + requestedJob.majorsAssociated + " Major";
   }
      
   
