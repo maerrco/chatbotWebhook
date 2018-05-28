@@ -117,6 +117,29 @@ restService.post("/sdpFailed", function(req, res) {
   else if(req.body.result.action == "requestSuggestedPapers") {
     var paperArray = new Array();
     var chosenMajor = req.body.result.parameters.Major.toLowerCase();    
+    var maj;
+    
+    switch(chosenMajor) {
+      case "sd":
+        maj = "Software Development"
+        break;
+      case "ns":
+        maj = "Networks and Security"
+        break;
+      case "cs":
+        maj = "Computer Science"
+        break;
+      case "iss":
+        maj = "IT Service Science"
+        break;
+      case "als":
+        maj = "Analytics"
+        break;
+      case "ci":
+        maj = "Computational Intelligence"
+        break;
+    }
+    
     var arrayLength = papers.length;
     var currentPaper;
     
@@ -148,7 +171,7 @@ restService.post("/sdpFailed", function(req, res) {
         }
         else {}
       }
-      speech = "Nice! for that major, I would suggest taking: \n Year One papers: " + results1 + "\n Year Two papers: " + results2 + "\n Year Three papers: " + results3;
+      speech = "hmmm, for " + maj + ", I would suggest taking: \n Year One papers: " + results1 + "\n Year Two papers: " + results2 + "\n Year Three papers: " + results3;
     }
     
     else {
@@ -166,7 +189,7 @@ restService.post("/sdpFailed", function(req, res) {
         currentPaper2 = paperArray[index];
         results += currentPaper2 + " ";
       }
-      speech = "Here are the papers that are compulsary for " + req.body.result.parameters.ChosenYear + " of your major: " + results;
+      speech = "Here are the papers that are compulsary for " + req.body.result.parameters.ChosenYear + " of " + maj + ": " + results;
     }
   }
   
