@@ -291,6 +291,7 @@ restService.post("/sdpFailed", function(req, res) {
                ]
     
     var chosenMajor = req.body.result.parameters.Major;
+    var requestedJobs = new Array();
     var maj;
     
     switch(chosenMajor) {
@@ -313,7 +314,11 @@ restService.post("/sdpFailed", function(req, res) {
         maj = "Computational Intelligence"
         break;
     
-    var requestedJobs = jobs.filter(function(obj){return obj.majorsAssociated === maj});
+    for(var i = 0; i < jobs.length; i++) {
+      if(jobs[i].majorsAssociated == "maj") {
+        requestedJobs.push(jobs[i].job);
+      }
+    }
     speech = requestedJobs.toString();
   }
      
