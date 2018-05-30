@@ -314,12 +314,13 @@ restService.post("/sdpFailed", function(req, res) {
         maj = "Computational Intelligence"
         break;
     }
-    
-    for(var i = 0; i < jobs.length; i++) {
-      if(jobs[i].majorsAssociated == "maj") {
+    jobs.forEach(function (arrayItem) {
+      var x = arrayItem.majorsAssociated;
+      if(x == maj) {
         requestedJobs.push(jobs[i].job);
       }
-    }
+    });
+    
     speech = requestedJobs.toString();
   }
      
