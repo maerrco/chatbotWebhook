@@ -317,7 +317,7 @@ restService.post("/sdpFailed", function(req, res) {
     jobs.forEach(function (arrayItem) {
       var x = arrayItem.majorsAssociated;
       if(x == maj) {
-        requestedJobs.push(jobs[i].job);
+        requestedJobs.push(arrayItem.job);
       }
     });
     
