@@ -254,7 +254,29 @@ restService.post("/sdpFailed", function(req, res) {
   
   else if(req.body.result.action == "jobsInvolved") {
     var chosenMajor = req.body.result.parameters.Major;
-    var requestedJobs = jobs.filter(function(obj){return obj.majorsAssociated == chosenMajor});
+    var maj;
+    
+    switch(chosenMajor) {
+      case "sd":
+        maj = "Software Development"
+        break;
+      case "ns":
+        maj = "Networks and Security"
+        break;
+      case "cs":
+        maj = "Computer Science"
+        break;
+      case "iss":
+        maj = "IT Service Science"
+        break;
+      case "als":
+        maj = "Analytics"
+        break;
+      case "ci":
+        maj = "Computational Intelligence"
+        break;
+    
+    var requestedJobs = jobs.filter(function(obj){return obj.majorsAssociated == maj});
     speech = requestedJobs.toString();
   }
      
