@@ -279,11 +279,11 @@ restService.post("/sdpFailed", function(req, res) {
     jobs.forEach(function (arrayItem) {
       var x = arrayItem.majorsAssociated;
       if(x == maj) {
-        requestedJobs.push(arrayItem.job);
+        requestedJobs.push(arrayItem.job + " ");
       }
     });
     
-    speech = requestedJobs.toString();
+    speech = "Jobs that are associated with a " + maj + " major are: " + requestedJobs.toString();
   }
      
   
