@@ -249,8 +249,72 @@ restService.post("/sdpFailed", function(req, res) {
                ]
     
     var requestedJob = jobs.find(function (obj) { return obj.job === chosenJob; });
-    
     speech = requestedJob.job + "s are commonly known to be studying papers in a " + requestedJob.majorsAssociated + " Major";
+  }
+  
+  else if(req.body.result.action == "jobsInvolved") {
+     var jobs = [{ job: "App Developer", majorsAssociated: "Software Development"},
+                { job: "Biostatistician", majorsAssociated: "Analytics"},
+                { job: "Business/quality/statistical analyst", majorsAssociated: "Analytics"},
+                { job: "Call centre manager", majorsAssociated: "IT Service Science"},
+                { job: "Computer Programmer", majorsAssociated: "Software Development"},
+                { job: "Database administrator", majorsAssociated: "IT Service Science"},
+                { job: "Data analyst", majorsAssociated: "Computational Intelligence"},
+                { job: "Entrepreneur", majorsAssociated: "Computer Science"},
+                { job: "Government statistician", majorsAssociated: "Analytics"},
+                { job: "Industrial researcher", majorsAssociated: "Computer Science"},
+                { job: "Industrial forecaster", majorsAssociated: "Analytics"},
+                { job: "Information analyst and designer", majorsAssociated: "IT Service Science or Computational Intelligence"},
+                { job: "Integration and functional consultant", majorsAssociated: "IT Service Science"},
+                { job: "IS operational manager", majorsAssociated: "IT Service Science"},
+                { job: "IS services consultant", majorsAssociated: "Computational Intelligence"},
+                { job: "IT Security Analyst", majorsAssociated: "Networks and Security"},
+                { job: "IT service supervisor", majorsAssociated: "IT Service Science"},
+                { job: "IT support role", majorsAssociated: "IT Service Science"},
+                { job: "IT supervisor/manager", majorsAssociated: "Computational Intelligence"},
+                { job: "Logistics analyst", majorsAssociated: "IT Service Science or Computational Intelligence"},
+                { job: "Logistics or quality analyst", majorsAssociated: "Analytics"},
+                { job: "Network Analyst", majorsAssociated: "Networks and Security"},   
+                { job: "Network Designer", majorsAssociated: "Networks and Security"},
+                { job: "Outsourced IT services co-ordinator", majorsAssociated: "IT Service Science"},
+                { job: "Project leader", majorsAssociated: "Computational Intelligence"},
+                { job: "Project Manager", majorsAssociated: "Software Development"},
+                { job: "Research and development manager", majorsAssociated: "Computer Science"},
+                { job: "Software architect", majorsAssociated: "Computer Science or IT Service Science"},
+                { job: "Software designer and implementer", majorsAssociated: "Computer Science"},
+                { job: "Software Developer", majorsAssociated: "Software Development"},
+                { job: "Systems Analyst", majorsAssociated: "Software Development"},
+                { job: "Systems and Network Administrator", majorsAssociated: "Networks and Security or IT Service Science"},
+                { job: "Technical or business analyst", majorsAssociated: "Computational Intelligence"},
+                { job: "Technology Consultant", majorsAssociated: "Software Development"},
+                { job: "Web Developer", majorsAssociated: "Software Development"},
+               ]
+    
+    var chosenMajor = req.body.result.parameters.Major;
+    var maj;
+    
+    switch(chosenMajor) {
+      case "sd":
+        maj = "Software Development"
+        break;
+      case "ns":
+        maj = "Networks and Security"
+        break;
+      case "cs":
+        maj = "Computer Science"
+        break;
+      case "iss":
+        maj = "IT Service Science"
+        break;
+      case "als":
+        maj = "Analytics"
+        break;
+      case "ci":
+        maj = "Computational Intelligence"
+        break;
+    
+    var requestedJobs = jobs.filter(function(obj){return obj.majorsAssociated === maj});
+    speech = requestedJobs.toString();
   }
      
   
