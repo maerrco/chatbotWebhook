@@ -313,6 +313,7 @@ restService.post("/sdpFailed", function(req, res) {
       case "ci":
         maj = "Computational Intelligence"
         break;
+    }
     
     for(var i = 0; i < jobs.length; i++) {
       if(jobs[i].majorsAssociated == "maj") {
