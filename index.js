@@ -254,7 +254,7 @@ restService.post("/sdpFailed", function(req, res) {
   
   else if(req.body.result.action == "jobsInvolved") {
     var chosenMajor = req.body.result.parameters.Major;
-    var requestedJobs = jobs.filter(function(a){return a !== chosenMajor});
+    var requestedJobs = jobs.filter(function(obj){return obj.majorsAssociated == chosenMajor});
     speech = requestedJobs.toString();
   }
      
